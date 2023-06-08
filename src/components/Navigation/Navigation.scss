@@ -1,3 +1,11 @@
+a {
+    text-decoration: none;
+}
+
+.nav-active {
+    border-bottom: 1px solid #FF6060;
+}
+
 .nav-container {
     display: flex;
     justify-content: center;
@@ -17,7 +25,11 @@
         }
 
         .div-nav-aside {
+            width: 20%;
+
             .nav-ul {
+                display: flex;
+                justify-content: space-around;
                 list-style: none;
                 padding: 0;
                 margin: 0;
@@ -25,8 +37,6 @@
 
                 .li-nav {
                     color: #FF6060;
-                    margin-left: 30px;
-                    // border-bottom: 1px solid brown;
                 }
             }
         }
