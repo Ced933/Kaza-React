@@ -22,13 +22,13 @@ const SinglePage = () => {
 
     // on recupère l'id pour pouvoir faire un trie pour selesctionner uniquement une annonce avec le bon id 
     const { id } = useParams();
-    console.log(id);
+
     // on filtre pour récupérer la bonne annonce sur laquelle on a cliqué 
     const filterLocation = data.filter(home => id === home.id)
-    console.log(filterLocation);
+
     // Nous donne le nombre d'etoile rouge 
     const filterLocationRating = filterLocation[0].rating;
-    console.log(filterLocationRating);
+
     // arrStar initialiser a vide 
     const arrStar = [];
     // le nombre d'etoile rouge a pusher dans le tableau arrStar 
@@ -36,14 +36,22 @@ const SinglePage = () => {
         arrStar.push({ star: '../redstar.png' })
 
     }
-    console.log(arrStar);
+
     // le nombre d'etoile grise a pusher dans le tableau arrStar 
     for (let x = 0; x < (5 - filterLocationRating); x++) {
         arrStar.push({ star: '../graystar.png' })
-
-
     }
 
+
+    const filterImg = filterLocation[0].pictures;
+    console.log(filterImg.length);
+    let [current, setCurrent] = useState(0);
+    const prev = () => {
+        let newIndex = current - 1;
+        setCurrent(newIndex < 0 ? filterImg.length - 1 : newIndex);
+    }
+
+    const next = () => setCurrent((current) => (console.log(current)));
     return (
         <div>
 
@@ -51,8 +59,23 @@ const SinglePage = () => {
                 filterLocation.map(item => {
                     return (
                         <div key={item.id} className='single-container'>
-                            <div className='div-single-img'>
-                                <img className='single-img' src={item.cover} alt="" />
+                            <div className='div-carousel-img'>
+                                {
+                                    filterLocation[0].pictures.map((image, index) => {
+                                        return (
+                                            <img key={index} className='carousel-item' src={image} alt="" />
+                                        )
+                                    })
+                                }
+                                <div className='button-container'>
+
+                                    <img onClick={prev} className='chevronleft' src="../Vectorleft.png" alt="" />
+
+
+
+                                    <img onClick={next} className='chevronright' src="../Vectorright.png" alt="" />
+                                </div>
+
                             </div>
                             <div className='home-description'>
                                 <div className='left-description'>
@@ -96,7 +119,7 @@ const SinglePage = () => {
                                 <div className='drop-description'>
                                     <div className='drop-container-span-img'>
                                         <span className='span-drop-description'>Description</span>
-                                        <img onClick={handleDropdown} className='img-clapet' src="../fetch.svg" alt="" />
+                                        <img onClick={handleDropdown} className='img-clapet' src="../fetch.svg" style={{ transform: `rotate(${open ? 180 : 0}deg)`, transition: "all 0.25s", }} alt="" />
 
                                     </div>
 
@@ -112,7 +135,7 @@ const SinglePage = () => {
                                 <div className='drop-description-equipment'>
                                     <div className='drop-container-span-img'>
                                         <span className='span-drop-description'>Equipement</span>
-                                        <img onClick={handleDropdownEquipment} className='img-clapet' src="../fetch.svg" alt="" />
+                                        <img onClick={handleDropdownEquipment} className='img-clapet' src="../fetch.svg" style={{ transform: `rotate(${openEquipment ? 180 : 0}deg)`, transition: "all 0.25s", }} alt="" />
 
                                     </div>
 

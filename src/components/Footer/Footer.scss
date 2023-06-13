@@ -6,17 +6,22 @@
     .footer-container {
         display: flex;
         flex-direction: column;
-        // justify-content: center;
         align-items: center;
-
-        // border: 1px solid orangered;
 
         .logo-footer {
             width: 100px;
+
+            @media only screen and (max-width: 320px) {
+                margin-bottom: 30px;
+            }
         }
 
         .footer-h4 {
             color: #fff;
+
+            @media only screen and (max-width: 320px) {
+                font-size: 10px;
+            }
         }
     }
 }

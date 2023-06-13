@@ -20,6 +20,10 @@ a {
         .div-img {
             .img-logo {
                 width: 150px;
+
+                @media only screen and (max-width: 320px) {
+                    width: 120px;
+                }
             }
 
         }
@@ -27,16 +31,24 @@ a {
         .div-nav-aside {
             width: 20%;
 
+            @media only screen and (max-width: 320px) {
+                width: 40%;
+            }
+
             .nav-ul {
                 display: flex;
                 justify-content: space-around;
                 list-style: none;
                 padding: 0;
                 margin: 0;
-                display: flex;
+
 
                 .li-nav {
                     color: #FF6060;
+
+                    @media only screen and (max-width: 320px) {
+                        font-size: 12px;
+                    }
                 }
             }
         }

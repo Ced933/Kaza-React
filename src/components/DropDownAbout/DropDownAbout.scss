@@ -1,0 +1,41 @@
+.drop-description {
+    width: 65%;
+    margin: 10px 0;
+
+    @media only screen and (max-width: 320px) {
+        width: 100%;
+    }
+
+    .drop-container-span-img {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-radius: 5px;
+        padding: 10px 0;
+        width: 100%;
+        background-color: #FF6060;
+
+        .span-drop-description {
+            color: #fff;
+            margin-left: 10px;
+        }
+
+        .img-clapet {
+            cursor: pointer;
+            margin-right: 10px;
+        }
+    }
+
+    .description {
+        background-color: #F6F6F6;
+        padding-bottom: 50px;
+        display: flex;
+        align-items: center;
+        padding: 10px;
+        border-radius: 0 0 10px 10px;
+
+        .p-description {
+            color: #FF6060;
+        }
+    }
+}

@@ -3,11 +3,34 @@
     margin: 0 auto;
     padding-bottom: 200px;
 
-    .div-single-img {
-        width: 100%;
+    .div-carousel-img {
 
-        .single-img {
+        display: flex;
+        position: relative;
+        overflow: hidden;
+
+
+        .carousel-item {
             width: 100%;
+        }
+
+        .button-container {
+            position: absolute;
+            padding: 0 10px;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            // align-items: center;
+            top: 45%;
+
+
+            .chevronleft {
+                cursor: pointer;
+            }
+
+            .chevronright {
+                cursor: pointer;
+            }
         }
     }
 
