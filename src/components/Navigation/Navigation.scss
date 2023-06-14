@@ -21,7 +21,7 @@ a {
             .img-logo {
                 width: 150px;
 
-                @media only screen and (max-width: 320px) {
+                @media only screen and (max-width: 450px) {
                     width: 120px;
                 }
             }
@@ -31,7 +31,7 @@ a {
         .div-nav-aside {
             width: 20%;
 
-            @media only screen and (max-width: 320px) {
+            @media only screen and (max-width: 450px) {
                 width: 40%;
             }
 
@@ -46,7 +46,7 @@ a {
                 .li-nav {
                     color: #FF6060;
 
-                    @media only screen and (max-width: 320px) {
+                    @media only screen and (max-width: 450px) {
                         font-size: 12px;
                     }
                 }

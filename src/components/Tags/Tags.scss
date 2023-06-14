@@ -1,0 +1,16 @@
+.span-tag {
+    padding: 5px 30px;
+    background-color: #FF6060;
+    color: #fff;
+    border-radius: 10px;
+    margin-right: 10px;
+    white-space: nowrap;
+    margin-bottom: 5px;
+
+    @media only screen and (max-width: 450px) {
+        font-size: 10px;
+        padding: 5px 20px;
+        border-radius: 5px;
+
+    }
+}

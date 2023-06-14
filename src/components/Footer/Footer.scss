@@ -10,16 +10,15 @@
 
         .logo-footer {
             width: 100px;
+            margin-bottom: 30px;
 
-            @media only screen and (max-width: 320px) {
-                margin-bottom: 30px;
-            }
+
         }
 
         .footer-h4 {
             color: #fff;
 
-            @media only screen and (max-width: 320px) {
+            @media only screen and (max-width: 450px) {
                 font-size: 10px;
             }
         }

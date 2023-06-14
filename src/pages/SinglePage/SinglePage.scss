@@ -1,36 +1,16 @@
 .single-container {
     width: 90%;
     margin: 0 auto;
-    padding-bottom: 200px;
+    padding-bottom: 50px;
 
-    .div-carousel-img {
+    .container-slider {
+        width: 100%;
+        height: 415px;
+        margin: 0 auto;
+        border-radius: 10px;
 
-        display: flex;
-        position: relative;
-        overflow: hidden;
-
-
-        .carousel-item {
-            width: 100%;
-        }
-
-        .button-container {
-            position: absolute;
-            padding: 0 10px;
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            // align-items: center;
-            top: 45%;
-
-
-            .chevronleft {
-                cursor: pointer;
-            }
-
-            .chevronright {
-                cursor: pointer;
-            }
+        @media only screen and (max-width: 450px) {
+            height: 300px;
         }
     }
 
@@ -39,6 +19,11 @@
         justify-content: space-between;
         margin: 30px 0;
         padding: 10px;
+
+        @media only screen and (max-width: 450px) {
+            flex-direction: column;
+            margin: 0;
+        }
 
         .left-description {
             .h3-left-description {
@@ -54,26 +39,45 @@
 
             .tag-section {
                 margin-top: 20px;
+                height: auto;
 
-                .span-tag {
-                    padding: 5px 30px;
-                    background-color: #FF6060;
-                    color: #fff;
-                    border-radius: 10px;
-                    margin-right: 10px;
+                @media only screen and (max-width: 450px) {
+                    display: flex;
+                    flex-wrap: wrap;
                 }
+
+
             }
         }
 
         .right-description {
+            @media only screen and (max-width: 450px) {
+                display: flex;
+                flex-direction: row-reverse;
+                justify-content: space-between;
+                align-items: center;
+                margin-top: 10px;
+            }
+
             .host {
                 display: flex;
                 align-items: center;
                 margin-bottom: 15px;
 
+                @media only screen and (max-width: 450px) {
+                    margin-bottom: 0;
+                }
+
                 .h4-host-name {
 
                     text-align: right;
+                    white-space: pre;
+
+                    @media only screen and (max-width: 450px) {
+                        font-size: 12px;
+                        word-break: break-word;
+
+                    }
                 }
 
                 .img-host {
@@ -93,25 +97,32 @@
         }
     }
 
-    .dropdown-container {
+    .dropdown-container-description {
         width: 100%;
         display: flex;
         justify-content: space-between;
+        padding: 10px;
+
+        @media only screen and (max-width: 450px) {
+            flex-direction: column;
+
+        }
 
         .drop-description {
             width: 45%;
-            background-color: #FF6060;
-            height: 40px;
             border-radius: 5px;
+            margin: 0;
 
+            @media only screen and (max-width: 450px) {
+                width: 100%;
+                margin-bottom: 20px;
+            }
 
             .drop-container-span-img {
+                background-color: #FF6060;
                 display: flex;
                 justify-content: space-between;
-                align-items: center;
-                height: 100%;
                 width: 100%;
-
 
                 .span-drop-description {
                     color: #fff;
@@ -144,17 +155,21 @@
 
         .drop-description-equipment {
             width: 45%;
-            background-color: #FF6060;
-
-            height: 40px;
             border-radius: 5px;
 
-            .drop-container-span-img {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                height: 100%;
+            @media only screen and (max-width: 450px) {
                 width: 100%;
+            }
+
+            .drop-container-span-img {
+
+                display: flex;
+                background-color: #FF6060;
+                justify-content: space-between;
+
+                width: 100%;
+                padding: 10px 0;
+                border-radius: 5px;
 
 
                 .span-drop-description {

@@ -1,0 +1,28 @@
+.div-carousel-img {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    position: relative;
+    overflow: hidden;
+
+
+    .carousel-item {
+        width: 100%;
+    }
+
+
+    .chevronleft {
+        cursor: pointer;
+        position: absolute;
+        top: 40%;
+        left: 2%;
+    }
+
+    .chevronright {
+        cursor: pointer;
+        position: absolute;
+        top: 40%;
+        right: 2%;
+    }
+
+}
