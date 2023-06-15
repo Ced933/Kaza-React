@@ -22,24 +22,33 @@ const Slider = ({ filterImg }) => {
 
     };
     const goToNext = () => {
-        const isFirstSlide = currentIndex === filterImg.length - 1;
-        const newIndex = isFirstSlide ? 0 : currentIndex + 1;
+        const isLastSlide = currentIndex === filterImg.length - 1;
+        const newIndex = isLastSlide ? 0 : currentIndex + 1;
         setCurrentIndex(newIndex);
     };
+
     return (
         <div className='div-carousel-img'>
 
             <div style={slideStyles}></div>
-
+            {/* l'index sur lequel je suis + 1 car les index commence par 0 sur la longueur total de l'array  */}
             {
-                currentIndex !== 0 &&
-                <img onClick={goToPrevious} className='chevronleft' src="../Vectorleft.png" alt="" />
+                filterImg.length !== 1 &&
+                <div className='block-arrow-notation'>
+
+                    <span className='numerotation' >{currentIndex + 1} /  {filterImg.length} </span>
+
+                    <img onClick={goToPrevious} className='chevronleft' src="../Vectorleft.png" alt="" />
+
+
+
+
+                    <img onClick={goToNext} className='chevronright' src="../Vectorright.png" alt="" />
+                </div>
             }
 
-            {
-                currentIndex !== filterImg.length - 1 &&
-                <img onClick={goToNext} className='chevronright' src="../Vectorright.png" alt="" />
-            }
+
+
 
         </div >
     );

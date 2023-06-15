@@ -5,24 +5,33 @@
     position: relative;
     overflow: hidden;
 
-
-    .carousel-item {
+    .block-arrow-notation {
+        position: absolute;
         width: 100%;
+        height: 100%;
+
+        .numerotation {
+            position: absolute;
+            bottom: 5%;
+            left: 45%;
+            color: #fff;
+            font-size: 20px;
+        }
+
+
+        .chevronleft {
+            cursor: pointer;
+            position: absolute;
+            top: 40%;
+            left: 2%;
+        }
+
+        .chevronright {
+            cursor: pointer;
+            position: absolute;
+            top: 40%;
+            right: 2%;
+        }
+
     }
-
-
-    .chevronleft {
-        cursor: pointer;
-        position: absolute;
-        top: 40%;
-        left: 2%;
-    }
-
-    .chevronright {
-        cursor: pointer;
-        position: absolute;
-        top: 40%;
-        right: 2%;
-    }
-
 }
