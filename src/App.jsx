@@ -1,9 +1,9 @@
 import React from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import ErrorPage404 from './pages/ErrorPage404/ErrorPage404';
 import Home from './pages/Home/Home';
 import About from './pages/About/About';
-import SinglePage from './pages/SinglePage/SinglePage';
+import Accommodation from './pages/Accommodation/Accommodation';
 // import Navigation from './components/Navigation/Navigation';
 // import Footer from './components/Footer/Footer';
 import BaseLayout from './components/BaseLayout';
@@ -16,9 +16,11 @@ const App = () => {
         <Route path='/' element={<BaseLayout />}>
           <Route index element={<Home />} />
           <Route path='/about' element={<About />} />
-          <Route path='/singlepage/:id' element={<SinglePage />} />
-          <Route path='*' element={<ErrorPage404 />} />
+          <Route path='/accommodation/:id' element={<Accommodation />} />
+          <Route path='/accommodation/*' element={<ErrorPage404 />} />
+          <Route path='/404' element={<ErrorPage404 />} />
         </Route>
+        <Route path='*' element={<Navigate to="/404" />} />
 
       </Routes>
       {/* <Footer /> */}

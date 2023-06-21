@@ -29,7 +29,7 @@ const Home = () => {
                             datatwo.map((item) => {
 
                                 return (
-                                    <Link key={item.id} item={item} to={`singlepage/${item.id}`}>
+                                    <Link key={item.id} item={item} to={`accommodation/${item.id}`}>
                                         <figure className='figure-home'>
                                             <img src={item.cover} className='img-figure' alt={`picture of ${item.title}`} />
                                             <figcaption className='figcaption-bg'>

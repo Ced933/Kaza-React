@@ -1,16 +1,24 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 // import { createElement } from 'react';
-import './SinglePage.scss';
-
+import './Accommodation.scss';
+import ErrorPage404 from '../ErrorPage404/ErrorPage404';
 import { useParams } from 'react-router-dom';
 import data from '../../data/Annonce.json';
 import Slider from '../../components/Slider/Slider';
 import Tags from '../../components/Tags/Tags';
+import Stars from '../../components/Stars/Stars';
 
-const SinglePage = () => {
+const Accommodation = () => {
 
 
     const [open, setOpen] = useState(false);
+    const { id } = useParams();
+    // je dois definir directement dans mon use state ma conditio pour evité une boucle infini 
+    const [filterLocation, setFilterLocation] = useState(data.find(home => id === home.id));
+    // const [filterLocationRating, setFilterLocationRating] = useState();
+    const arrStar = useState([]);
+    // const filterLocationRating = filterLocation.rating;
+    // const [arrStar, setArrStar] = useState([]);
     // Pour ouvrir et fermer le dropdown description 
     const handleDropdown = () => {
         setOpen(!open)
@@ -23,30 +31,45 @@ const SinglePage = () => {
     }
 
     // on recupère l'id pour pouvoir faire un trie pour selesctionner uniquement une annonce avec le bon id 
-    const { id } = useParams();
+
 
     // on filtre pour récupérer la bonne annonce sur laquelle on a cliqué 
-    const filterLocation = data.find(home => id === home.id)
-    console.log(filterLocation);
-    // Nous donne le nombre d'etoile rouge 
-    const filterLocationRating = filterLocation.rating;
+    // setFilterLocation(data.find(home => id === home.id));
 
-    // arrStar initialiser a vide 
-    const arrStar = [];
+
+
+
+    // if (filterLocation === undefined) {
+    //     // navigate("/404");
+    //     console.log('cest bien undefined');
+    //     return navigate("/404");
+    // }
+    // else {
+
+
+    //     console.log(filterLocation);
+    // }
+
+
+    // // Nous donne le nombre d'etoile rouge 
+
+
+    // setFilterLocationRating(filterLocation.rating);
+    // // arrStar initialiser a vide 
+    // console.log(filterLocationRating);
+
+
     // le nombre d'etoile rouge a pusher dans le tableau arrStar 
-    for (let x = 0; x < filterLocationRating; x++) {
-        arrStar.push({ star: '../redstar.png' })
+    // for (let x = 0; x < filterLocationRating; x++) {
+    //     arrStar.push({ star: '../redstar.png' })
 
-    }
+    // }
 
     // le nombre d'etoile grise a pusher dans le tableau arrStar 
-    for (let x = 0; x < (5 - filterLocationRating); x++) {
-        arrStar.push({ star: '../graystar.png' })
-    }
+    // for (let x = 0; x < (5 - filterLocationRating); x++) {
+    //     arrStar.push({ star: '../graystar.png' })
+    // }
 
-
-    const filterImg = filterLocation.pictures;
-    console.log(filterImg.length + 1);
 
 
 
@@ -55,9 +78,12 @@ const SinglePage = () => {
 
         <div>
             {
-                <div className='single-container'>
+                filterLocation === undefined ? (
+                    <ErrorPage404 />
+
+                ) : <div className='single-container'>
                     <div className="container-slider">
-                        <Slider filterImg={filterImg} />
+                        <Slider filterImg={filterLocation.pictures} />
                     </div>
 
                     <div className='home-description'>
@@ -84,9 +110,10 @@ const SinglePage = () => {
                             <div id='star-container' className='star-container'>
                                 {
                                     // Faire apparaître toutes les étoiles 
-                                    arrStar.map((star, index) => {
-                                        return <img key={index} src={star.star} className='star-rating' />
-                                    })
+                                    // arrStar.map((star, index) => {
+                                    //     return <img key={index} src={star.star} className='star-rating' />
+                                    // })
+                                    <Stars scaleValue={filterLocation.rating} careType="redstar" />
                                 }
                             </div>
                         </div>
@@ -139,11 +166,9 @@ const SinglePage = () => {
                 </div>
 
 
-
             }
-
         </div>
     );
 };
 
-export default SinglePage;
+export default Accommodation;
