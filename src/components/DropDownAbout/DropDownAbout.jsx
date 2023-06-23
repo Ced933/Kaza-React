@@ -1,9 +1,9 @@
 import React from 'react';
 import './DropDownAbout.scss';
 import { useState } from 'react';
-// {} destructuring pour avoir acce directement a l'object 
+// {} destructuring pour avoir accès directement à l'objet (props)
 const DropDownAbout = ({ about, index }) => {
-    console.log(about);
+
     const [open, setOpen] = useState(false);
     // Pour ouvrir et fermer le dropdown description 
     const openDropdown = () => {

@@ -12,6 +12,7 @@ const Navigation = () => {
                 <div className='div-nav-aside'>
                     <ul className='nav-ul'>
                         <NavLink to="/" className={(nav) => (nav.isActive ? "nav-active" : "")}>
+                            {/* Si on est bien sur ce lien alors la classe nav active est activé  */}
                             <li className='li-nav'>Accueil</li>
                         </NavLink>
 

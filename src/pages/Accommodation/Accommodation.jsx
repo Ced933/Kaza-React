@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react';
-// import { createElement } from 'react';
+import React, { useState } from 'react';
 import './Accommodation.scss';
 import ErrorPage404 from '../ErrorPage404/ErrorPage404';
 import { useParams } from 'react-router-dom';
@@ -11,73 +10,32 @@ import Stars from '../../components/Stars/Stars';
 const Accommodation = () => {
 
 
-    const [open, setOpen] = useState(false);
+
+    // On récupère l'id pour pouvoir faire un trie pour sélectionner uniquement une annonce avec le bon id 
     const { id } = useParams();
-    // je dois definir directement dans mon use state ma conditio pour evité une boucle infini 
+    // On find pour récupérer la bonne annonce sur laquelle on a cliqué sans utiliser map, car ce n'est pas un tableau 
+    // Je dois définir directement ma condition dans mon useStates pour eviter une boucle infini 
     const [filterLocation, setFilterLocation] = useState(data.find(home => id === home.id));
-    // const [filterLocationRating, setFilterLocationRating] = useState();
-    const arrStar = useState([]);
-    // const filterLocationRating = filterLocation.rating;
-    // const [arrStar, setArrStar] = useState([]);
+
+    // Initialisation des variables dropdown 
+    const [open, setOpen] = useState(false);
+    const [openEquipment, setOpenEquipment] = useState(false);
+
     // Pour ouvrir et fermer le dropdown description 
     const handleDropdown = () => {
         setOpen(!open)
     }
     // Pour ouvrir et fermer le dropdown equipment 
-    const [openEquipment, setOpenEquipment] = useState(false);
 
     const handleDropdownEquipment = () => {
         setOpenEquipment(!openEquipment)
     }
 
-    // on recupère l'id pour pouvoir faire un trie pour selesctionner uniquement une annonce avec le bon id 
-
-
-    // on filtre pour récupérer la bonne annonce sur laquelle on a cliqué 
-    // setFilterLocation(data.find(home => id === home.id));
-
-
-
-
-    // if (filterLocation === undefined) {
-    //     // navigate("/404");
-    //     console.log('cest bien undefined');
-    //     return navigate("/404");
-    // }
-    // else {
-
-
-    //     console.log(filterLocation);
-    // }
-
-
-    // // Nous donne le nombre d'etoile rouge 
-
-
-    // setFilterLocationRating(filterLocation.rating);
-    // // arrStar initialiser a vide 
-    // console.log(filterLocationRating);
-
-
-    // le nombre d'etoile rouge a pusher dans le tableau arrStar 
-    // for (let x = 0; x < filterLocationRating; x++) {
-    //     arrStar.push({ star: '../redstar.png' })
-
-    // }
-
-    // le nombre d'etoile grise a pusher dans le tableau arrStar 
-    // for (let x = 0; x < (5 - filterLocationRating); x++) {
-    //     arrStar.push({ star: '../graystar.png' })
-    // }
-
-
-
-
-
     return (
 
         <div>
             {
+                // si filterLocation est undefined alors on affiche la page 404 sinon on affiche notre home
                 filterLocation === undefined ? (
                     <ErrorPage404 />
 
@@ -88,12 +46,9 @@ const Accommodation = () => {
 
                     <div className='home-description'>
                         <div className='left-description'>
-
                             <h3 className='h3-left-description'>{filterLocation.title}</h3>
                             <h4 className='h4-left-description'>{filterLocation.location}</h4>
-
-
-
+                            {/* Tag container  */}
                             <div className='tag-section'>
                                 {
                                     filterLocation.tags.map((tag, index) => {
@@ -107,13 +62,14 @@ const Accommodation = () => {
                                 <h4 className='h4-host-name'>{filterLocation.host.name} </h4>
                                 <img src={filterLocation.host.picture} className='img-host' alt={`picture of ${filterLocation.host.name}`} />
                             </div>
+                            {/* Star container  */}
                             <div id='star-container' className='star-container'>
                                 {
-                                    // Faire apparaître toutes les étoiles 
-                                    // arrStar.map((star, index) => {
-                                    //     return <img key={index} src={star.star} className='star-rating' />
-                                    // })
-                                    <Stars scaleValue={filterLocation.rating} careType="redstar" />
+                                    <div className='start-box'>
+                                        <Stars rating={filterLocation.rating} careType="redstar" />
+                                        <Stars rating={filterLocation.rating} careType="graystar" />
+                                    </div>
+
                                 }
                             </div>
                         </div>
@@ -123,11 +79,10 @@ const Accommodation = () => {
                         <div className='drop-description'>
                             <div className='drop-container-span-img'>
                                 <span className='span-drop-description'>Description</span>
-                                <img onClick={handleDropdown} className='img-clapet' src="../fetch.svg" style={{ transform: `rotate(${open ? 180 : 0}deg)`, transition: "all 0.25s", }} alt="" />
-
+                                <img onClick={handleDropdown} className='img-clapet' src="../fetch.svg" style={{ transform: `rotate(${open ? 180 : 0}deg)`, transition: "all 0.25s", }} alt="clapet" />
                             </div>
-
                             {
+                                //    si open = true alors tu m'affiches cette div 
                                 open &&
                                 <div className='description'>
                                     <p className='p-description'>{filterLocation.description}</p>
@@ -139,33 +94,26 @@ const Accommodation = () => {
                         <div className='drop-description-equipment'>
                             <div className='drop-container-span-img'>
                                 <span className='span-drop-description'>Equipement</span>
-                                <img onClick={handleDropdownEquipment} className='img-clapet' src="../fetch.svg" style={{ transform: `rotate(${openEquipment ? 180 : 0}deg)`, transition: "all 0.25s", }} alt="" />
+                                <img onClick={handleDropdownEquipment} className='img-clapet' src="../fetch.svg" style={{ transform: `rotate(${openEquipment ? 180 : 0}deg)`, transition: "all 0.25s", }} alt="clapet" />
 
                             </div>
 
                             {
+                                //    si openEquipement = true alors tu m'affiches cette div 
                                 openEquipment &&
                                 <ul className='description-equipment'>
 
                                     {
-
                                         filterLocation.equipments.map((equipment, index) => {
-
                                             return <li className='li-equipment' key={index}>{equipment}</li>
                                         })
                                     }
 
                                 </ul>
                             }
-
-
                         </div>
-
-
                     </div>
                 </div>
-
-
             }
         </div>
     );

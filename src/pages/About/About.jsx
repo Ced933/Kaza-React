@@ -1,23 +1,8 @@
 import React from 'react';
-
 import './About.scss';
-import { useState } from 'react';
 import DropDownAbout from '../../components/DropDownAbout/DropDownAbout';
 
-
-
-
-
 const About = () => {
-    // const [open, setOpen] = useState(false);
-    // Pour ouvrir et fermer le dropdown description 
-    // const openDropdown = (i) => {
-    //     console.log(i);
-    //     if (open == i) {
-    //         return setOpen(false)
-    //     }
-    //     setOpen(i);
-    // }
 
     const aboutRules = [
         {
@@ -41,7 +26,6 @@ const About = () => {
 
     return (
         <div>
-
             <div className='about-container'>
                 <div className='div-img-bg-black'>
                     <div className='img-bg-about'>
@@ -55,7 +39,7 @@ const About = () => {
 
                                 return (
 
-                                    <DropDownAbout index={index} about={about} />
+                                    <DropDownAbout key={index} about={about} />
                                 )
 
 

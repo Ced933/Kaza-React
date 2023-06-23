@@ -1,6 +1,5 @@
 import React from 'react';
 import data from '../../data/Annonce.json';
-
 import './Home.scss';
 import { Link } from 'react-router-dom';
 
@@ -8,20 +7,15 @@ import { Link } from 'react-router-dom';
 const Home = () => {
 
     const datatwo = data.map(item => item);
-    // console.log(datatwo)
+
     return (
         <div>
-
             <div className='home-box'>
-
                 <div className='bg-img-home'>
                     <div className='bg-h1'>
-
                         <h1 className='h1-home'>Chez vous, partout et ailleurs</h1>
                     </div>
                 </div>
-
-
                 <div className='figure-container'>
                     <div className='figure-box'>
 
@@ -36,7 +30,6 @@ const Home = () => {
                                                 <h4 className='h4-home'>{item.title}</h4>
                                             </figcaption>
                                         </figure>
-
                                     </Link>
                                 )
                             })

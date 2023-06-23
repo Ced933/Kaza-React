@@ -76,7 +76,6 @@
                     @media only screen and (max-width: 450px) {
                         font-size: 12px;
                         word-break: break-word;
-
                     }
                 }
 
@@ -90,8 +89,12 @@
             }
 
             .star-container {
-                .star-rating {
-                    width: 20px;
+                .start-box {
+                    display: flex;
+
+                    .star-rating {
+                        width: 20px;
+                    }
                 }
             }
         }
